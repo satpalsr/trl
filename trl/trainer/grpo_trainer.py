@@ -323,6 +323,7 @@ class GRPOTrainer(Trainer):
                         # This is particularly useful here because we generate completions from the same prompts.
                         enable_prefix_caching=True,
                         max_model_len=self.args.vllm_max_model_len,
+                        max_logprobs=5
                     )
                 self.sampling_params = SamplingParams(
                     n=self.num_generations,
