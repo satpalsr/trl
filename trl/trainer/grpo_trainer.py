@@ -329,6 +329,7 @@ class GRPOTrainer(Trainer):
                     n=self.num_generations,
                     temperature=args.temperature,
                     max_tokens=self.max_completion_length,
+                    logprobs=5
                 )
 
             self._last_loaded_step = 0  # tag to avoid useless loading during grad checkpointing
