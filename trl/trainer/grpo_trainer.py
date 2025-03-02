@@ -430,7 +430,6 @@ class GRPOTrainer(Trainer):
             all_prompts_text = gather_object(prompts_text)
             if self.accelerator.is_main_process:
                 # Add logprobs parameter to get token probabilities
-                self.sampling_params.logprobs = self.max_completion_length
                 outputs = self.llm.generate(all_prompts_text, sampling_params=self.sampling_params, use_tqdm=False)
                 completion_ids = [out.token_ids for completions in outputs for out in completions.outputs]
                 completion_logprobs = [out.logprobs for completions in outputs for out in completions.outputs]
